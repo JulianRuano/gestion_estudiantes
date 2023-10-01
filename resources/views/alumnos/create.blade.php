@@ -34,7 +34,7 @@
                     <form action="{{ url('alumnos') }}" method="post">
                         @csrf
                         <div class="text-center mb-10">
-                            <h1 class="font-bold text-3xl text-gray-900">REGISTRAR ALUMNO</h1>
+                            <h1 class="font-bold text-3xl text-gray-900  tracking-widest">REGISTRAR ALUMNO</h1>
                             <p>Completa la siguiente informacion:</p>
                         </div>
                         <div>

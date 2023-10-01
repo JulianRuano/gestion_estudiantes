@@ -4,57 +4,128 @@
 
 @section('contenido')
 
-<main>
-    <div class="container py-4">
-        @if(session('status'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('status') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-        @endif
+    <div class="mx-auto min-h-full px-4 py-8 sm:px-8  bg-gray-900">
+        <div class="flex items-center justify-between pb-6">
+            <div>
+                <h2 class="font-semibold text-white  tracking-widest">Alumnos registrados</h2>
+                <span class="text-xs text-white  tracking-widest">Lista de alumnos registrados</span>
+            </div>
+            <div class="flex items-center justify-between">
+                <div class="ml-10 space-x-8 lg:ml-40">
+                    <a href="{{ url('alumnos/create') }}" class="block w-full no-underline">
+                        <button
+                            class="flex items-center gap-2 rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white focus:outline-none focus:ring hover:bg-blue-700 hover:bg-indigo-700 w-full h-full">
+                            <i class="fa-solid fa-plus"></i> Nuevo registro
+                        </button>
+                    </a>
 
-        <h2>Alumnos</h2>
 
-        <a href="{{url('alumnos/create')}}" class="btn btn-primary btn-sm">Nuevo registro</a>
+                </div>
+            </div>
+        </div>
+        <div class="overflow-y-hidden rounded-lg border">
+            <div class="overflow-x-auto bg-white">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-indigo-500 text-left text-xs font-semibold uppercase tracking-widest text-white">
+                            <th class="px-5 py-3">ID</th>
+                            <th class="px-5 py-3">Matricula</th>
+                            <th class="px-5 py-3">Nombre</th>
+                            <th class="px-5 py-3">Fecha de nacimiento</th>
+                            <th class="px-5 py-3">Telefono</th>
+                            <th class="px-5 py-3">Email</th>
+                            <th class="px-5 py-3">Nivel</th>
+                            <th class="px-5 py-3">Acciones</th>
+                            <th class="px-5 py-3"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-500">
+                        @foreach ($alumnos as $alumno)
+                            <tr>
+                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                    <p class="whitespace-no-wrap">{{ $alumno->id }}</p>
+                                </td>
+                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                    <p class="whitespace-no-wrap">{{ $alumno->matricula }}</p>
+                                </td>
+                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                    <p class="whitespace-no-wrap">{{ $alumno->nombre }}</p>
+                                </td>
+                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                    <p class="whitespace-no-wrap">{{ $alumno->fecha_nacimiento }}</p>
+                                </td>
+                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                    <p class="whitespace-no-wrap">{{ $alumno->telefono }}</p>
+                                </td>
+                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                    <p class="whitespace-no-wrap">{{ $alumno->email }}</p>
+                                </td>
+                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                    <p class="whitespace-no-wrap">{{ $alumno->nivel->nombre }}</p>
+                                </td>
+                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                    <div class="flex">
 
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th >Matricula</th>
-                    <th >Nombre</th>
-                    <th >Fecha de nacimiento</th>
-                    <th >Telefono</th>
-                    <th >Email</th>
-                    <th >Nivel</th>
-                    <th ></th>
-                    <th ></th>
-                </tr>
-            </thead>
+                                        <a href="{{ url('alumnos/' . $alumno->id . '/edit') }}"
+                                            class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-blue-900 dark:text-blue-300 mb-2 no-underline">Editar</a>
+                                        <form action="{{ url('alumnos/' . $alumno->id) }}" method="post" class="mb-0 mt-1">
+                                            @csrf
+                                            {{ method_field('DELETE') }}
 
-            <tbody>
-                @foreach($alumnos as $alumno)
-                    <tr>
-                        <td>{{$alumno->id}}</td>
-                        <td>{{$alumno->matricula}}</td>
-                        <td>{{$alumno->nombre}}</td>
-                        <td>{{$alumno->fecha_nacimiento}}</td>
-                        <td>{{$alumno->telefono}}</td>
-                        <td>{{$alumno->email}}</td>
-                        <td>{{$alumno->nivel->nombre}}</td>
-                        
-                        <td><a href="{{url('alumnos/'.$alumno->id.'/edit')}}" class="btn btn-warning btn-sm">Editar</a></td>
-                        <td>
-                            <form action="{{url('alumnos/'.$alumno->id)}}" method="post">
-                                @csrf
-                                {{method_field('DELETE')}}
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar el registro?')">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-            {{ $alumnos->links() }}     
+                                            <a href="#"
+                                                class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-red-900 dark:text-red-300 mb-2 no-underline "
+                                                onclick="eliminarAlumno({{ $alumno->id }});"> <button type="submit"
+                                                    onclick="return confirm('¿Desea eliminar el registro?')">Eliminar</button></a>
+                                        </form>
+
+
+                                    </div>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex flex-col items-center border-t bg-white px-5 py-5 sm:flex-row sm:justify-between">
+                <span class="text-xs text-gray-600 sm:text-sm"> Showing {{ $alumnos->firstItem() }} to
+                    {{ $alumnos->lastItem() }} of {{ $alumnos->total() }} Entries </span>
+                <div class="mt-2 inline-flex sm:mt-0">
+                    @if ($alumnos->previousPageUrl())
+                        <a href="{{ $alumnos->previousPageUrl() }}">
+                            <button
+                                class="mr-2 h-12 w-12 rounded-full border text-sm font-semibold text-gray-600 transition duration-150 hover:bg-gray-100">
+                                Prev
+                            </button>
+                        </a>
+                    @else
+                        <button
+                            class="cursor-not-allowed mr-2 h-12 w-12 rounded-full border text-sm font-semibold text-gray-600 bg-gray-100"
+                            disabled>
+                            Prev
+                        </button>
+                    @endif
+
+
+                    @if ($alumnos->nextPageUrl())
+                        <a href="{{ $alumnos->nextPageUrl() }}">
+                            <button
+                                class="mr-2 h-12 w-12 rounded-full border text-sm font-semibold text-gray-600 transition duration-150 hover:bg-gray-100">
+                                Next
+                            </button>
+                        </a>
+                    @else
+                        <button
+                            class="cursor-not-allowed mr-2 h-12 w-12 rounded-full border text-sm font-semibold text-gray-600 bg-gray-100"
+                            disabled>
+                            Next
+                        </button>
+                    @endif
+
+
+                </div>
+            </div>
+
+        </div>
     </div>
-</main>

@@ -13,7 +13,7 @@
                 <h5>Por favor corrige los siguientes errores: </h5>
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>                        
+                        <li>{{$error}}</li>
                     @endforeach
                 </ul>
             </div>
@@ -48,7 +48,7 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="telefono" class="col-sm-2 col-form-label">Telefonpo</label>
+                <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" id="telefono" name="telefono" placeholder="telefono" value="{{$alumno->telefono}}"
                     required>
@@ -69,11 +69,11 @@
                         <option value="">Seleccione un nivel</option>
                         <!-- lo traemos de la base de datos -->
                         @foreach ($niveles as $nivel)
-                            <option value="{{$nivel->id}}" 
+                            <option value="{{$nivel->id}}"
                                 @if ($nivel->id == $alumno->nivel_id)
-                                    selected="selected" 
+                                    selected="selected"
                                 @endif>{{$nivel->nombre}}</option>
-                        @endforeach                       
+                        @endforeach
                     </select>
                 </div>
             </div>
