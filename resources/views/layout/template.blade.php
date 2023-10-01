@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
     @yield('content')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -35,7 +34,6 @@
             formulario.style.display = "block";
         };
     </script>
-
 </body>
 
 </html>
