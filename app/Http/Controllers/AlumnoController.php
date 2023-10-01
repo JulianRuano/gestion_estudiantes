@@ -66,8 +66,15 @@ class AlumnoController extends Controller
     public function edit($id)
     {
         $alumno = Alumno::find($id);
-        return view('alumnos.edit',['alumno'=>$alumno,'niveles'=>Nivel::all()]);
+
+        if (!$alumno) {
+            // El alumno no se encontró, muestra la página de error 404 personalizada
+            return response()->view('errors.404', [], 404);
+        }
+
+        return view('alumnos.edit', ['alumno' => $alumno, 'niveles' => Nivel::all()]);
     }
+
 
     /**
      * Update the specified resource in storage.

@@ -3,8 +3,12 @@
 @section('title', 'Alumnos | Escuela')
 
 @section('contenido')
+    <div id="spinner"
+        class="w-screen h-screen fixed top-0 left-0 z-50 flex justify-center items-center bg-black bg-opacity-75">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+    </div>
 
-    <div class="mx-auto min-h-full px-4 py-8 sm:px-8  bg-gray-900">
+    <div id="list-alumnos" class="mx-auto min-h-full px-4 py-8 sm:px-8  bg-gray-900" style="display: none;">
         <div class="flex items-center justify-between pb-6">
             <div>
                 <h2 class="font-semibold text-white  tracking-widest">Alumnos registrados</h2>
@@ -40,6 +44,7 @@
                         </tr>
                     </thead>
                     <tbody class="text-gray-500">
+
                         @foreach ($alumnos as $alumno)
                             <tr>
                                 <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
@@ -84,6 +89,13 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if (count($alumnos) == 0)
+                            <td>
+                                <br>
+                                <br>
+                            </td>
+                        @endif
+
                     </tbody>
                 </table>
             </div>
@@ -129,3 +141,14 @@
 
         </div>
     </div>
+
+
+    <script>
+        function mostrarContenido() {
+            const spinner = document.getElementById('spinner');
+            const lista = document.getElementById('list-alumnos');
+            spinner.style.display = 'none';
+            lista.style.display = "block";
+        }
+        window.addEventListener('load', mostrarContenido);
+    </script>
