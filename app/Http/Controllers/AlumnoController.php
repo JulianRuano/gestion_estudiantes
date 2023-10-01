@@ -36,7 +36,7 @@ class AlumnoController extends Controller
             'nombre'=>'required|max:50',
             'fecha'=>'required|date',
             'telefono'=>'required|max:20',
-            'email'=>'max:100',
+            'email'=>'required|max:100',
             'nivel'=>'required'
         ]);
 
