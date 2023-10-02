@@ -8,7 +8,7 @@
     </div>
 
     <div id="list-alumnos" class="mx-auto min-h-full px-4 py-8 sm:px-8  bg-gray-900" style="display: none;">
-        <div class="flex items-center justify-between pb-6  mx-auto xl:max-w-6xl">
+        <div class="flex items-center justify-between pb-6  mx-auto max-w-screen-2xl">
             <div>
                 <h2 class="font-semibold text-white  tracking-widest">Alumnos registrados</h2>
                 <span class="text-xs text-white  tracking-widest">Lista de alumnos registrados</span>
@@ -26,48 +26,48 @@
                 </div>
             </div>
         </div>
-        <div class="overflow-y-hidden rounded-lg border  mx-auto xl:max-w-6xl ">
+        <div class="overflow-y-hidden rounded-lg border  mx-auto max-w-screen-2xl ">
             <div class="overflow-x-auto bg-white">
                 <table class="w-full">
                     <thead>
                         <tr class="bg-indigo-500 text-left text-xs font-semibold uppercase tracking-widest text-white">
-                            <th class="px-5 py-3">ID</th>
-                            <th class="px-5 py-3">Matricula</th>
-                            <th class="px-5 py-3">Nombre</th>
-                            <th class="px-5 py-3">Fecha de nacimiento</th>
-                            <th class="px-5 py-3">Telefono</th>
-                            <th class="px-5 py-3">Email</th>
-                            <th class="px-5 py-3">Nivel</th>
-                            <th class="px-5 py-3">Acciones</th>
-                            <th class="px-5 py-3"></th>
+                            <th class="px-3 py-3">ID</th>
+                            <th class="px-3 py-3">Matricula</th>
+                            <th class="px-3 py-3">Nombre</th>
+                            <th class="px-3 py-3">Fecha de nacimiento</th>
+                            <th class="px-3 py-3">Telefono</th>
+                            <th class="px-3 py-3">Email</th>
+                            <th class="px-3 py-3">Nivel</th>
+                            <th class="px-3 py-3">Acciones</th>
+                            <th class="px-3 py-3"></th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-500">
 
                         @foreach ($alumnos as $alumno)
                             <tr>
-                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->id }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->matricula }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->nombre }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->fecha_nacimiento }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->telefono }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->email }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->nivel->nombre }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
                                     <div class="flex">
 
                                         <a href="{{ url('alumnos/' . $alumno->id . '/edit') }}"
