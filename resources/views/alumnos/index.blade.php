@@ -3,13 +3,12 @@
 @section('title', 'Alumnos | Escuela')
 
 @section('content')
-    <div id="spinner"
-        class="w-screen h-screen fixed top-0 left-0 z-50 flex justify-center items-center bg-black bg-opacity-75">
-        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+    <div id="spinner" class="w-screen h-screen fixed top-0 left-0 z-50 flex justify-center items-center bg-gray-900">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2"></div>
     </div>
 
     <div id="list-alumnos" class="mx-auto min-h-full px-4 py-8 sm:px-8  bg-gray-900" style="display: none;">
-        <div class="flex items-center justify-between pb-6 lg:max-w-4xl mx-auto xl:max-w-6xl">
+        <div class="flex items-center justify-between pb-6  mx-auto xl:max-w-6xl">
             <div>
                 <h2 class="font-semibold text-white  tracking-widest">Alumnos registrados</h2>
                 <span class="text-xs text-white  tracking-widest">Lista de alumnos registrados</span>
@@ -27,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="overflow-y-hidden rounded-lg border lg:max-w-4xl mx-auto xl:max-w-6xl ">
+        <div class="overflow-y-hidden rounded-lg border  mx-auto xl:max-w-6xl ">
             <div class="overflow-x-auto bg-white">
                 <table class="w-full">
                     <thead>
@@ -72,14 +71,15 @@
                                     <div class="flex">
 
                                         <a href="{{ url('alumnos/' . $alumno->id . '/edit') }}"
-                                            class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-blue-900 dark:text-blue-300 mb-2 no-underline">Editar</a>
-                                        <form action="{{ url('alumnos/' . $alumno->id) }}" method="post" class="mb-0 mt-1">
+                                            class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-blue-900 dark:text-blue-300  no-underline">Editar</a>
+                                        <form action="{{ url('alumnos/' . $alumno->id) }}" method="post" class="mb-0">
                                             @csrf
                                             {{ method_field('DELETE') }}
 
                                             <a href="#"
-                                                class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-red-900 dark:text-red-300 mb-2 no-underline "
+                                                class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-red-900 dark:text-red-300 mt-1 no-underline "
                                                 onclick="eliminarAlumno({{ $alumno->id }});"> <button type="submit"
+                                                    class="mt-1"
                                                     onclick="return confirm('¿Desea eliminar el registro?')">Eliminar</button></a>
                                         </form>
 

@@ -11,15 +11,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/a9354fe65c.js" crossorigin="anonymous"></script>
     <title>@yield('title')</title>
-    <style>
-        /* Spinner */
-        .border-gray-900 {
-            border-color: #cbd5e0;
-        }
-    </style>
 </head>
 
-<body>
+<body class="h-screen w-screen">
     @yield('content')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

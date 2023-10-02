@@ -12,20 +12,20 @@
                 onclick="window.location.href='http://127.0.0.1:8000/alumnos'">CRUD</button>
         </div>
 
-        <div class="area" >
+        <div class="area h-0">
             <ul class="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
-        </div >
+        </div>
 
     </main>
 @endsection
