@@ -15,7 +15,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-       $alumnos = Alumno::paginate(2);
+       $alumnos = Alumno::paginate(4);
         return view('alumnos.index',['alumnos'=>$alumnos]);
     }
 

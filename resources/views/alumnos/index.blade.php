@@ -3,6 +3,29 @@
 @section('title', 'Alumnos | Escuela')
 
 @section('content')
+
+    @if (session('status'))
+        <script>
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+
+            Toast.fire({
+            icon: 'success',
+            title: '{{ session('status') }}'            
+            })
+        </script>
+    @endif
+
+
     <div id="spinner" class="w-screen h-screen fixed top-0 left-0 z-50 flex justify-center items-center bg-gray-900">
         <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2"></div>
     </div>
@@ -46,44 +69,42 @@
 
                         @foreach ($alumnos as $alumno)
                             <tr>
-                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-4 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->id }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-4 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->matricula }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-4 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->nombre }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-4 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->fecha_nacimiento }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-4 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->telefono }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-4 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->email }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-4 text-sm">
                                     <p class="whitespace-no-wrap">{{ $alumno->nivel->nombre }}</p>
                                 </td>
-                                <td class="border-b border-gray-200 bg-white px-3 py-5 text-sm">
+                                <td class="border-b border-gray-200 bg-white px-3 py-4 text-sm">
                                     <div class="flex">
 
                                         <a href="{{ url('alumnos/' . $alumno->id . '/edit') }}"
                                             class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-blue-900 dark:text-blue-300  no-underline">Editar</a>
-                                        <form action="{{ url('alumnos/' . $alumno->id) }}" method="post" class="mb-0">
-                                            @csrf
-                                            {{ method_field('DELETE') }}
-
-                                            <a href="#"
-                                                class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-red-900 dark:text-red-300 mt-1 no-underline "
-                                                onclick="eliminarAlumno({{ $alumno->id }});"> <button type="submit"
-                                                    class="mt-1"
-                                                    onclick="return confirm('¿Desea eliminar el registro?')">Eliminar</button></a>
-                                        </form>
-
-
+                                            <form action="{{ url('alumnos/' . $alumno->id) }}" method="post" class="mb-0">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+    
+                                                <a href="#"
+                                                    class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full dark:bg-red-900 dark:text-red-300  no-underline "
+                                                    onclick="eliminarAlumno({{ $alumno->id }});"> <button type="submit"
+                                                        class="mt-1"
+                                                        onclick="return confirm('¿Desea eliminar el registro?')">Eliminar</button></a>
+                                            </form>
                                     </div>
 
                                 </td>
@@ -141,7 +162,6 @@
 
         </div>
     </div>
-
 
     <script>
         function mostrarContenido() {
