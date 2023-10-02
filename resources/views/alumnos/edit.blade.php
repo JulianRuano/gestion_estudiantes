@@ -3,7 +3,7 @@
 @section('title', 'Editar alumno | Escuela')
 
 
-@section('contenido')
+@section('content')
     <div id="spinner"
         class="w-screen h-screen fixed top-0 left-0 z-50 flex justify-center items-center bg-black bg-opacity-75">
         <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
@@ -184,3 +184,4 @@
             formulario2.style.display = "block";
         };
     </script>
+@endsection

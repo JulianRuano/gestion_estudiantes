@@ -6,6 +6,8 @@ use App\Models\Alumno;
 use App\Models\Nivel;
 use Illuminate\Http\Request;
 
+//php artisan make:controller AlumnoController --model=Alumno --resource
+
 class AlumnoController extends Controller
 {
     /**
