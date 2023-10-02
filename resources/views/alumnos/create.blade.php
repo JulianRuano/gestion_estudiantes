@@ -126,7 +126,7 @@
                                         <p class="text-red-500
                                         text-xs italic mb-0">El
                                             campo
-                                            fecha de nacimiento es requerido
+                                            telefono es requerido
                                         </p>
                                     @enderror
                                 </div>
