@@ -8,7 +8,7 @@
     </div>
 
     <div id="list-alumnos" class="mx-auto min-h-full px-4 py-8 sm:px-8  bg-gray-900" style="display: none;">
-        <div class="flex items-center justify-between pb-6  mx-auto xl:max-w-6xl">
+        <div class="flex items-center justify-between pb-6  mx-auto max-w-screen-2xl">
             <div>
                 <h2 class="font-semibold text-white  tracking-widest">Alumnos registrados</h2>
                 <span class="text-xs text-white  tracking-widest">Lista de alumnos registrados</span>
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="overflow-y-hidden rounded-lg border  mx-auto xl:max-w-6xl ">
+        <div class="overflow-y-hidden rounded-lg border  mx-auto max-w-screen-2xl ">
             <div class="overflow-x-auto bg-white">
                 <table class="w-full">
                     <thead>
